@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package finance;
+
+option go_package = "github.com/urealaden/cova-cents/server/proto/pots";
+
+import "common.proto";
+
+message Pot {
+    string id = 1;
+    string name = 2;
+    double target = 3;
+    string theme = 4;
+}
+
+message AddPotRequest {
+    string name = 1;
+    double target = 2;
+    string theme = 3;
+}
+
+message AddPotResponse {
+    string id = 1;
+    string name = 2;
+    double target = 3;
+    string theme = 4;
+    finance.Status status = 5;
+}
+
+message RetrievePotsRequest {
+    int32 limit = 1;
+    int32 offset = 2;
+}
+
+message RetrievePotsResponse {
+    repeated Pot pots = 1;
+    finance.Status status = 2;
+}
+
+message UpdatePotRequest {
+    string id = 1;
+    string name = 2;
+    double target = 3;
+    string theme = 4;
+}
+
+message UpdatePotResponse {
+    string id = 1;
+    string name = 2;
+    double target = 3;
+    string theme = 4;
+    finance.Status status = 5;
+}
+
+message DeletePotRequest {
+    string id = 1;
+}
+
+message DeletePotResponse {    
+    finance.Status status = 2;
+}

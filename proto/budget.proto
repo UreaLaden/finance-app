@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package finance;
+
+option go_package = "github.com/urealaden/cova-cents/server/proto/budget";
+import "common.proto";
+
+message Budget {
+    string category = 1;
+    double maximum = 2;
+    string theme = 3;
+}
+
+message AddBudgetRequest {
+    string category = 1;
+    double maximum = 2;
+    string theme = 3;
+}
+
+message AddBudgetResponse {
+    string id = 1;
+    string category = 2;
+    double maximum = 3;
+    string theme = 4;
+    finance.Status status = 5;
+}
+
+message GetBudgetsRequest {
+    string filter = 1; // Optional filter by category
+    int32 limit = 2;   // Maximum number of results
+    int32 offset = 3;  // Offset for pagination
+}
+
+message GetBudgetsResponse {
+    repeated Budget budgets = 1;    
+    finance.Status status = 2;
+}
+
+
+message UpdateBudgetRequest{
+    string id = 1;
+    string category = 2;
+    double maximum = 3;
+    string theme = 4;
+}
+
+message UpdateBudgetResponse {
+    string id = 1;
+    string category = 2;
+    double maximum = 3;
+    string theme = 4;
+    finance.Status status = 5;
+}
+
+message DeleteBudgetRequest {
+    string id = 1;
+}
+
+message DeleteBudgetResponse {    
+    finance.Status status = 2;
+}
+

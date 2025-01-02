@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package finance;
+
+option go_package = "github.com/urealaden/cova-cents/server/proto";
+
+import "budget.proto";
+import "transactions.proto";
+import "pots.proto";
+
+service BudgetService {
+    rpc AddBudget(AddBudgetRequest) returns (AddBudgetResponse);
+    rpc GetBudgets(GetBudgetsRequest) returns (GetBudgetsResponse);
+    rpc UpdateBudget(UpdateBudgetRequest) returns (UpdateBudgetResponse);
+    rpc DeleteBudget(DeleteBudgetRequest) returns (DeleteBudgetResponse);
+
+    rpc AddTransaction(AddTransactionRequest) returns (AddTransactionResponse);
+    rpc RetrieveTransactions(RetrieveTransactionsRequest) returns (RetrieveTransactionsResponse);
+
+    rpc AddPot(AddPotRequest) returns (AddPotResponse);
+    rpc RetrievePots(RetrievePotsRequest) returns (RetrievePotsResponse);
+    rpc UpdatePot(UpdatePotRequest) returns (UpdatePotResponse);
+    rpc DeletePot(DeletePotRequest) returns (DeletePotResponse);
+}
