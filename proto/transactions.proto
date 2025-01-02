@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package finance;
+
+option go_package = "github.com/urealaden/cova-cents/server/proto/transactions";
+
+import "google/protobuf/timestamp.proto";
+import "common.proto";
+
+
+message Transaction {
+    string id = 1;
+    string avatar = 2;
+    string name = 3;
+    string category = 4; //Consider making this an enum
+    google.protobuf.Timestamp date = 5;
+    double amount = 6;
+    bool recurring = 7;
+}
+
+message AddTransactionRequest {
+    string avatar = 1;
+    string name = 2;
+    string category = 3;
+    google.protobuf.Timestamp date = 4;
+    double amount = 5;
+    bool recurring = 6;
+}
+
+message AddTransactionResponse {
+    string id = 1;
+    string avatar = 2;
+    string name = 3;
+    string category = 4;
+    google.protobuf.Timestamp date = 5;
+    double amount = 6;
+    bool recurring = 7;
+    finance.Status status = 8;
+}
+
+message RetrieveTransactionsRequest {
+    string filter = 1; // Optional filter by category
+    int32 limit = 2;   // Maximum number of results
+    int32 offset = 3;  // Offset for pagination
+}
+
+message RetrieveTransactionsResponse {
+    repeated Transaction transactions = 1;    
+    finance.Status status = 2;
+}

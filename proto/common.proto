@@ -1,0 +1,11 @@
+syntax ="proto3";
+
+package finance;
+
+option go_package = "github.com/urealaden/cova-cents/server/proto/common";
+
+message Status {
+    string message = 1;
+    string code = 2;
+}
+
