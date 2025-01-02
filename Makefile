@@ -28,3 +28,6 @@ $(project):
 
 clear-proto:
 	rm -rf server/proto/*.pb.go
+
+build-app:
+	go build -o bin/cova-cents.exe ./main.go

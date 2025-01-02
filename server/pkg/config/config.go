@@ -24,11 +24,12 @@ The Config struct is mapped to config.yaml file
 type Config struct {
 	DBUrl                   string `mapstructure:"db_url" validate:"required"`
 	FirebaseCredentialsFile string `mapstructure:"firebase_credentials_file" validate:"required"`
+	GRPCServerAddress       string `mapstructure:"grpc_server_address" validate:"required"`
 }
 
 func InitConfig() {
 	c := &Config{}
-	
+
 	viper.SetConfigName("config")
 	viper.SetConfigType("yaml")
 
@@ -37,8 +38,8 @@ func InitConfig() {
 	if err := viper.ReadInConfig(); err != nil {
 		log.Fatalf("Error reading config file, %s", err)
 	}
-	
-	viper.BindEnv("firebase_credentials_file","GOOGLE_APPLICATION_CREDENTIALS")
+
+	viper.BindEnv("firebase_credentials_file", "GOOGLE_APPLICATION_CREDENTIALS")
 
 	credentialsPath := os.Getenv("GOOGLE_APPLICATION_CREDENTIALS")
 	if credentialsPath == "" {
@@ -60,5 +61,5 @@ func InitConfig() {
 		for _, err := range err.(validator.ValidationErrors) {
 			fmt.Printf("Validation error on field '%s': %v\n", err.Namespace(), err.Error())
 		}
-	}		
+	}
 }

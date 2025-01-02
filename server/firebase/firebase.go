@@ -5,16 +5,15 @@ import (
 	"log"
 
 	firebase "firebase.google.com/go"
-	"github.com/spf13/viper"
-	common "github.com/urealaden/cova-cents/server/common"
+	"firebase.google.com/go/auth"
+	"firebase.google.com/go/db"
+	"github.com/spf13/viper"	
 	"google.golang.org/api/option"
 )
 
-func Init(appServer *common.AppServer) {
+func Init(ctx context.Context) (*firebase.App, *auth.Client, *db.Client, error) {
 	v := viper.GetViper()
-
-	ctx := context.Background()
-
+	
 	dbUrl := v.GetString("db_url")
 	config := &firebase.Config{
 		DatabaseURL: dbUrl,
@@ -26,19 +25,23 @@ func Init(appServer *common.AppServer) {
 	app, err := firebase.NewApp(ctx, config, opt)
 	if err != nil {
 		log.Fatalf("error initializing application sdk: %v\n", err)
+		return nil, nil, nil, err
 	}
-	appServer.SDK = app
-
+	
+	
 	authClient, err := app.Auth(ctx)
 	if err != nil {
 		log.Fatalf("error initializing auth client: %v\n", err)
-	}
-	appServer.Auth = authClient
-
+		return nil, nil, nil, err
+	}	
+	
 	dbClient, err := app.Database(ctx)
 	if err != nil {
 		log.Fatalf("error initializing database client: %v\n", err)
+		return nil, nil, nil, err
 	}
-	appServer.DBClient = dbClient
+	
 	log.Println("...Firebase Services initialized")
+
+	return app, authClient, dbClient, nil
 }
