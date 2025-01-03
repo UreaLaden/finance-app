@@ -1,0 +1,19 @@
+
+#   /$$$$$$                                  /$$$$$$                        /$$              
+#  /$$__  $$                                /$$__  $$                      | $$              
+# | $$  \__/  /$$$$$$  /$$    /$$  /$$$$$$ | $$  \__/  /$$$$$$  /$$$$$$$  /$$$$$$    /$$$$$$$
+# | $$       /$$__  $$|  $$  /$$/ |____  $$| $$       /$$__  $$| $$__  $$|_  $$_/   /$$_____/
+# | $$      | $$  \ $$ \  $$/$$/   /$$$$$$$| $$      | $$$$$$$$| $$  \ $$  | $$    |  $$$$$$ 
+# | $$    $$| $$  | $$  \  $$$/   /$$__  $$| $$    $$| $$_____/| $$  | $$  | $$ /$$ \____  $$
+# |  $$$$$$/|  $$$$$$/   \  $/   |  $$$$$$$|  $$$$$$/|  $$$$$$$| $$  | $$  |  $$$$/ /$$$$$$$/
+#  \______/  \______/     \_/     \_______/ \______/  \_______/|__/  |__/   \___/  |_______/ 
+                                                                                           
+# This file serves as the central source of truth for the application's configuration.
+# All configuration settings are loaded from this file and utilized across the application.
+# To get started, create a config.yaml and populate it with the required values.
+# This file also facilitates the generation of a .env file for the application's environment variables.
+                                                                                                                                                                            
+
+db_url: your_firebase_db_url
+firebase_credentials_file: path_to_your_service_key.json
+grpc_server_address: your_grpc_server_address

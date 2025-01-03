@@ -1,4 +1,5 @@
 PROTO_DIR=proto
+BINARY_DIR=./bin/cova-cents.exe
 
 ifeq ($(OS),Windows_NT)
 	SHELL := bash 
@@ -31,3 +32,16 @@ clear-proto:
 
 build-app:
 	go build -o bin/cova-cents.exe ./main.go
+
+.PHONY: run-app backend frontend
+
+run-app:backend frontend build-app
+
+backend: build-app
+	@echo "Starting backend server..."	
+	${BINARY_DIR}
+	
+frontend:
+	@echo "Starting frontend..."	
+	cd client && npm run start
+	

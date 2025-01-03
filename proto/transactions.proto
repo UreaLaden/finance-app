@@ -19,23 +19,12 @@ message Transaction {
 }
 
 message AddTransactionRequest {
-    string avatar = 1;
-    string name = 2;
-    string category = 3;
-    google.protobuf.Timestamp date = 4;
-    double amount = 5;
-    bool recurring = 6;
+    Transaction transaction = 1;    
 }
 
 message AddTransactionResponse {
-    string id = 1;
-    string avatar = 2;
-    string name = 3;
-    string category = 4;
-    google.protobuf.Timestamp date = 5;
-    double amount = 6;
-    bool recurring = 7;
-    finance.Status status = 8;
+    Transaction transaction= 1;
+    finance.Status status = 2;
 }
 
 message RetrieveTransactionsRequest {

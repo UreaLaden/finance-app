@@ -14,14 +14,14 @@ import (
 func Init(ctx context.Context) (*firebase.App, *auth.Client, *db.Client, error) {
 	v := viper.GetViper()
 	
-	dbUrl := v.GetString("db_url")
+	dbUrl := v.GetString("db_url")	
 	config := &firebase.Config{
-		DatabaseURL: dbUrl,
+		DatabaseURL: dbUrl,		
 	}
 
 	credentialsPath := v.GetString("firebase_credentials_file")
 	opt := option.WithCredentialsFile(credentialsPath)
-
+	
 	app, err := firebase.NewApp(ctx, config, opt)
 	if err != nil {
 		log.Fatalf("error initializing application sdk: %v\n", err)
