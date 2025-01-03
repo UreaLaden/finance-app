@@ -14,17 +14,12 @@ message Pot {
 }
 
 message AddPotRequest {
-    string name = 1;
-    double target = 2;
-    string theme = 3;
+    Pot pot = 1;
 }
 
 message AddPotResponse {
-    string id = 1;
-    string name = 2;
-    double target = 3;
-    string theme = 4;
-    finance.Status status = 5;
+    Pot pot = 1;
+    finance.Status status = 2;
 }
 
 message RetrievePotsRequest {
@@ -38,18 +33,12 @@ message RetrievePotsResponse {
 }
 
 message UpdatePotRequest {
-    string id = 1;
-    string name = 2;
-    double target = 3;
-    string theme = 4;
+    Pot pot = 1;
 }
 
 message UpdatePotResponse {
-    string id = 1;
-    string name = 2;
-    double target = 3;
-    string theme = 4;
-    finance.Status status = 5;
+    Pot pot = 1;
+    finance.Status status = 2;
 }
 
 message DeletePotRequest {

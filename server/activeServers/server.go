@@ -6,13 +6,15 @@ import (
 	"log"
 	"net"
 	"os"
-	"os/signal"	
+	"os/signal"
 
 	firebase "firebase.google.com/go"
 	"github.com/spf13/viper"
 	app "github.com/urealaden/cova-cents/server/firebase"
 	pb "github.com/urealaden/cova-cents/server/proto"
 	"google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 
 	"firebase.google.com/go/auth"
 	"firebase.google.com/go/db"
@@ -21,6 +23,7 @@ import (
 // BudgetServer implements the BudgetServiceServer for handling budget-related gRPC requests
 type BudgetServer struct {
 	pb.BudgetServiceServer
+	AppServer *AppServer
 }
 
 // AppServer centralizes Firebase services and the gRPC Budget Server
@@ -32,12 +35,13 @@ type AppServer struct {
 }
 
 func NewAppServer(sdk *firebase.App, dbClient *db.Client, auth *auth.Client) *AppServer {
-	return &AppServer{
+	appServer := &AppServer{
 		SDK:      sdk,
 		DBClient: dbClient,
 		Auth:     auth,
-		Server:   BudgetServer{},
 	}
+	appServer.Server = BudgetServer{AppServer: appServer}
+	return appServer
 }
 
 func InitializeAppServer(ctx context.Context) (*AppServer, context.CancelFunc, error) {
@@ -64,7 +68,7 @@ func StartGRPCServer(ctx context.Context, appServer *AppServer) error {
 	log.Printf("Listening on %s\n", addr)
 
 	server := grpc.NewServer()
-	pb.RegisterBudgetServiceServer(server, appServer.Server)
+	pb.RegisterBudgetServiceServer(server, &appServer.Server)
 
 	// Signal handling for graceful shutdown
 	go func() {
@@ -114,3 +118,12 @@ func handleSignals(cancel context.CancelFunc) {
 
 	cancel()
 }
+
+func (s *AppServer) ValidateDBClient() error {
+	if s.DBClient == nil {
+		return status.Errorf(codes.Internal, "DBClient is not initialized")
+	}
+	return nil
+}
+
+

@@ -6,23 +6,19 @@ option go_package = "github.com/urealaden/cova-cents/server/proto/budget";
 import "common.proto";
 
 message Budget {
-    string category = 1;
-    double maximum = 2;
-    string theme = 3;
-}
-
-message AddBudgetRequest {
-    string category = 1;
-    double maximum = 2;
-    string theme = 3;
-}
-
-message AddBudgetResponse {
     string id = 1;
     string category = 2;
     double maximum = 3;
     string theme = 4;
-    finance.Status status = 5;
+}
+
+message AddBudgetRequest {
+    Budget budget = 1;
+}
+
+message AddBudgetResponse {
+    Budget budget = 1;
+    finance.Status status = 2;
 }
 
 message GetBudgetsRequest {
@@ -38,18 +34,12 @@ message GetBudgetsResponse {
 
 
 message UpdateBudgetRequest{
-    string id = 1;
-    string category = 2;
-    double maximum = 3;
-    string theme = 4;
+    Budget budget = 1;    
 }
 
 message UpdateBudgetResponse {
-    string id = 1;
-    string category = 2;
-    double maximum = 3;
-    string theme = 4;
-    finance.Status status = 5;
+    Budget budget = 1;
+    finance.Status status = 2;
 }
 
 message DeleteBudgetRequest {
