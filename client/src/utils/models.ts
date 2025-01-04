@@ -1,5 +1,6 @@
 import { User } from "firebase/auth";
 import React from "react";
+import { InputFieldTypes } from "./helpers/constants";
 
 export interface iAuthClient {
   register: (email: string, password: string) => Promise<void>;
@@ -35,9 +36,9 @@ export interface iFallbackComponent {
 export type iPageConfig = {
   name: string;
   path: string;
-  element?: React.ReactNode;  
+  element?: React.ReactNode;
   iconName: string;
-  isActive:boolean;  
+  isActive: boolean;
 };
 
 export interface iSvgIconProps {
@@ -49,6 +50,18 @@ export interface iSvgIconProps {
   style?: React.CSSProperties;
 }
 
-export interface iProtectedRoute{
-  component:React.FC;  
+export interface iProtectedRoute {
+  component: React.FC;
+}
+
+export interface InputFieldProps {
+  type: InputFieldTypes;
+  label: string;
+  placeholder: string;
+  helperText?: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onClick?: (e: React.MouseEvent<HTMLInputElement>) => void;
+  error?: string;
+  required?: boolean;
 }
