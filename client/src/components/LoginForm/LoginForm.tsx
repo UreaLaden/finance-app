@@ -60,23 +60,21 @@ export const LoginForm: FC<iLoginFormProps> = (props) => {
   };
 
   const onSubmitHandler = () => {
-    if (
-      !emailRef.current?.value ||
-      !passwordRef.current?.value ||
-      !nameRef.current?.value
-    ) {
-      console.warn("Please fill in all fields");
-      return;
-    }
     props.onSubmit(
-      nameRef.current.value,
-      emailRef.current.value,
-      passwordRef.current.value
+      nameRef.current?.value,
+      emailRef.current?.value,
+      passwordRef.current?.value
     );
 
-    nameRef.current.value = "";
-    emailRef.current.value = "";
-    passwordRef.current.value = "";
+    if (nameRef.current?.value) {
+      nameRef.current.value = "";
+    }
+    if (emailRef.current?.value) {
+      emailRef.current.value = "";
+    }
+    if (passwordRef.current?.value) {
+      passwordRef.current.value = "";
+    }
   };
 
   return (

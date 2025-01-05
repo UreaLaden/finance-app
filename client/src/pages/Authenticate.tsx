@@ -1,10 +1,11 @@
 import { Banner, LoginForm } from "@/components";
 import { AuthLayout } from "@/components/Layout/Layout.component";
 import { AuthFormContainer } from "@/components/LoginForm/LoginForm.component";
+import { Strings } from "@/utils/helpers/constants";
 import SvgIcon from "@/utils/helpers/svgIcon";
 import { useAuth } from "@/utils/hooks/useAuth";
 import { paths } from "@/utils/routers/config";
-import { useMediaQuery } from "@mui/material";
+import { Typography, useMediaQuery } from "@mui/material";
 import { useCallback, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -96,6 +97,16 @@ export function Authenticate() {
             name={"illustrationAuthentication"}
             className={"auth-illustration"}
           />
+          <div className={"auth-illustration-text-container"}>
+            <Typography variant={"h1"} sx={{
+              fontSize:"2rem",
+              fontWeight: 700,
+            }}>{Strings.MainDescription}</Typography>
+            <Typography variant={"body1"} sx={{
+              fontSize:"var(--font-size-medium)",
+              fontWeight: 400,
+            }}>{Strings.SecondaryDescription}</Typography>
+          </div>
         </div>
       )}
 

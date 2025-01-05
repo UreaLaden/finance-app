@@ -41,26 +41,15 @@ export const AuthFormContainer = styled(Box)`
   display: flex;
   justify-content: center;
   align-items: center;
-  grid-column: 4 / -1;
+  grid-column: 1 / -1; /* Default for mobile and tablet */
   grid-row: 1;
   max-height: 100vh;
   border-radius: 8px;
   box-sizing: border-box;
 
-  @media (max-width:768px){
-    grid-column: 1 / -1;
-    grid-row: 1 / -1;
-  }
-
-  // Resize for mobile 
-  @media (min-width: 768px) {
-    grid-column: 1 / -1;
-    grid-row: 1 / -1;
-  }
-
-  // Resize for desktop
-  @media (min-width: 1024px) {
-    grid-column: 3 / -1;
+  // Resize anything larger than tablet
+  @media (min-width: 1041px) {
+    grid-column: 4 / span 2;
     grid-row: 1;
   }
 `;
