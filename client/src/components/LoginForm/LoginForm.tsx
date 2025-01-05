@@ -1,5 +1,5 @@
 import { iLoginFormProps } from "@/utils/models";
-import { FC, useMemo } from "react";
+import { FC, useMemo, useRef } from "react";
 import {
   LinkContainer,
   LoginFormContainer,
@@ -9,13 +9,18 @@ import { InputField } from "../InputField/InputField";
 import { InputFieldTypes } from "@/utils/helpers/constants";
 import { CustomButton } from "../CustomButton/CustomButton";
 import { Typography } from "@mui/material";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { paths } from "@/utils/routers/config";
 
-export const LoginForm: FC<iLoginFormProps> = () => {
+export const LoginForm: FC<iLoginFormProps> = (props) => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const nameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
 
   const ButtonText = useMemo(() => {
-    if (location.pathname === "/login") {
+    if (location.pathname === paths.Login) {
       return "Login";
     } else {
       return "Create Account";
@@ -23,7 +28,7 @@ export const LoginForm: FC<iLoginFormProps> = () => {
   }, [location.pathname]);
 
   const SignupText = useMemo(() => {
-    if (location.pathname === "/login") {
+    if (location.pathname === paths.Login) {
       return "Need to create an account?";
     } else {
       return "Already have an account?";
@@ -31,7 +36,7 @@ export const LoginForm: FC<iLoginFormProps> = () => {
   }, [location.pathname]);
 
   const LinkText = useMemo(() => {
-    if (location.pathname === "/login") {
+    if (location.pathname === paths.Login) {
       return "Sign up";
     } else {
       return "Login";
@@ -39,35 +44,70 @@ export const LoginForm: FC<iLoginFormProps> = () => {
   }, [location.pathname]);
 
   const TitleText = useMemo(() => {
-    if (location.pathname === "/login") {
+    if (location.pathname === paths.Login) {
       return "Login";
     } else {
       return "Sign Up";
     }
-  },[location.pathname])
+  }, [location.pathname]);
+
+  const onLinkSelected = () => {
+    if (location.pathname === paths.Login) {
+      navigate(paths.Signup, { state: { from: location } });
+    } else {
+      navigate(paths.Login, { state: { from: location } });
+    }
+  };
+
+  const onSubmitHandler = () => {
+    if (
+      !emailRef.current?.value ||
+      !passwordRef.current?.value ||
+      !nameRef.current?.value
+    ) {
+      console.warn("Please fill in all fields");
+      return;
+    }
+    props.onSubmit(
+      nameRef.current.value,
+      emailRef.current.value,
+      passwordRef.current.value
+    );
+
+    nameRef.current.value = "";
+    emailRef.current.value = "";
+    passwordRef.current.value = "";
+  };
 
   return (
-    <LoginFormContainer>
+    <LoginFormContainer className={"login-form"}>
       <LoginFormHeader>{TitleText}</LoginFormHeader>
-      <InputField mode={InputFieldTypes.TEXT} label="Name" placeholder={""} />
+      {location.pathname === paths.Signup && (
+        <InputField
+          mode={InputFieldTypes.TEXT}
+          label="Name"
+          placeholder={""}
+          ref={nameRef}
+        />
+      )}
       <InputField
         mode={InputFieldTypes.TEXT}
         label="Email"
         placeholder={""}
         helperText={undefined}
+        ref={emailRef}
       />
-      {location.pathname !== "/login" && (
-        <InputField
-          mode={InputFieldTypes.PASSWORD}
-          label="Create Password"
-          placeholder={""}
-          helperText={"Passwords must be at least 8 characters"}
-        />
-      )}
+      <InputField
+        mode={InputFieldTypes.PASSWORD}
+        label="Create Password"
+        placeholder={""}
+        helperText={"Passwords must be at least 8 characters"}
+        ref={passwordRef}
+      />
       <CustomButton
         label={ButtonText}
         type="primary"
-        onClick={() => {}}
+        onClick={onSubmitHandler}
         fullWidth={true}
       />
       <Typography
@@ -80,7 +120,14 @@ export const LoginForm: FC<iLoginFormProps> = () => {
         }}
       >
         <span>{SignupText}</span>
-        <LinkContainer>{LinkText}</LinkContainer>
+        <LinkContainer
+          onClick={onLinkSelected}
+          tabIndex={0}
+          role="button"
+          onKeyDown={(e) => e.key === "Enter" && onLinkSelected()}
+        >
+          {LinkText}
+        </LinkContainer>
       </Typography>
     </LoginFormContainer>
   );

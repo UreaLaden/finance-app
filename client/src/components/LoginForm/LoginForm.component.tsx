@@ -7,8 +7,16 @@ export const LoginFormContainer = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 1em;
-  min-width: 300px;
+  flex: 1;
+  padding:1em 1em 2em 1em;
+  min-width:343px;
+  max-width:343px;
 
+  @media (min-width: 768px) {
+    min-width: 560px;
+    max-width: 560px;
+  }
+ 
   & > button {
     margin-top: 1em;
   }
