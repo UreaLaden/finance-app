@@ -3,14 +3,14 @@ import React from "react";
 import { InputFieldTypes } from "./helpers/constants";
 
 export interface iAuthClient {
-  register: (email: string, password: string) => Promise<void>;
+  register: (email: string, password: string, name: string) => Promise<void>;
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
   getUser: () => Promise<User | null>;
 }
 
 export interface iAuthContext {
-  signup: (email: string, password: string) => Promise<void>;
+  signup: (email: string, password: string, name: string) => Promise<void>;
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
   getUser: () => Promise<User | null>;
@@ -73,10 +73,10 @@ export interface InputFieldProps {
 
 export interface iDropdownContent {
   contentMode: "color" | "text";
-  theme?:Color;
+  theme?: Color;
   primaryText: string;
   secondaryText?: string;
-  disable?:boolean;
+  disable?: boolean;
 }
 
 export interface iButtonProps {
@@ -91,5 +91,5 @@ export interface iButtonProps {
 }
 
 export interface iLoginFormProps {
-  onSubmit: () => void;  
+  onSubmit: (name?: string, email?: string, password?: string) => void;
 }

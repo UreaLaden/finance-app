@@ -1,17 +1,19 @@
-import { LoginForm } from "@/components";
+import { Banner, LoginForm } from "@/components";
+import { AuthLayout } from "@/components/Layout/Layout.component";
+import { AuthFormContainer } from "@/components/LoginForm/LoginForm.component";
+import { Strings } from "@/utils/helpers/constants";
+import SvgIcon from "@/utils/helpers/svgIcon";
 import { useAuth } from "@/utils/hooks/useAuth";
 import { paths } from "@/utils/routers/config";
-import { Box } from "@mui/material";
-import { useCallback, useEffect, useRef } from "react";
+import { Typography, useMediaQuery } from "@mui/material";
+import { useCallback, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export function Authenticate() {
-  const { login, getUser } = useAuth();
+  const { login, getUser, signup } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
-
-  const emailRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
+  const isDesktop = useMediaQuery("(min-width: 1041px)");
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -29,47 +31,88 @@ export function Authenticate() {
     checkAuth();
   }, [getUser, location, navigate]);
 
-  const handleLogin = useCallback(async () => {
-    try {
-      if (emailRef.current && passwordRef.current) {
-        await login(emailRef.current.value, passwordRef.current.value);
+  const handleLogin = useCallback(
+    async (email: string, password: string) => {
+      try {
+        if (email && password) {
+          await login(email, password);
+          const user = await getUser();
+          // Redirect after login
+          if (user) {
+            const redirectPath =
+              location.state?.from?.pathname || paths.Overview;
+            navigate(redirectPath);
+          }
+        }
+      } catch (error) {
+        console.error("Error logging in", error);
+      }
+    },
+    [getUser, location.state?.from?.pathname, login, navigate]
+  );
+
+  const handleSignup = useCallback(
+    async (name: string, email: string, password: string) => {
+      try {
+        if (!name || !email || !password) {
+          throw new Error("Please fill in all fields");
+        }
+        await signup(email, password, name);
         const user = await getUser();
-        // Redirect after login
+        // Redirect after signup
         if (user) {
           const redirectPath = location.state?.from?.pathname || paths.Overview;
           navigate(redirectPath);
         }
+      } catch (error) {
+        console.error("Error signing up", error);
       }
-    } catch (error) {
-      console.error("Error logging in", error);
-    }
-  }, [getUser, location.state?.from?.pathname, login, navigate]);
+    },
+    [getUser, location.state?.from?.pathname, signup, navigate]
+  );
 
-  const handleSignup = async () => {};
-
-  const handleSubmit = useCallback(() => {
-    if (location.pathname === paths.Login) {
-      handleLogin();
-      return;
-    }
-    handleSignup();
-  }, [handleLogin, location.pathname]);
+  const handleSubmit = useCallback(
+    (name?: string, email?: string, password?: string) => {
+      if (location.pathname === paths.Login) {
+        if (!email || !password) {
+          throw new Error("Please fill in all fields");
+        }
+        handleLogin(email, password);
+        return;
+      }
+      if (!name || !email || !password) {
+        throw new Error("Please fill in all fields");
+      }
+      handleSignup(name, email, password);
+    },
+    [handleLogin, handleSignup, location.pathname]
+  );
 
   return (
-    <Box
-      sx={{
-        width: "100%",
-        backgroundColor: "var(--white)",
-        display: "flex",
-        placeContent: "center",
-        margin: "1em",
-        padding:"1em 0 2em 0",
-        borderRadius: "8px",
-      }}
-    >
-      <div style={{ width: "85%" }}>
+    <AuthLayout className={"auth-layout"}>
+      {!isDesktop && <Banner />}
+      {isDesktop && (
+        <div className={"auth-illustration-container"}>
+          <SvgIcon
+            name={"illustrationAuthentication"}
+            className={"auth-illustration"}
+          />
+          <div className={"auth-illustration-text-container"}>
+            <Typography variant={"h1"} sx={{
+              fontSize:"2rem",
+              fontWeight: 700,
+            }}>{Strings.MainDescription}</Typography>
+            <Typography variant={"body1"} sx={{
+              fontSize:"var(--font-size-medium)",
+              fontWeight: 400,
+            }}>{Strings.SecondaryDescription}</Typography>
+          </div>
+        </div>
+      )}
+
+      <AuthFormContainer className={"auth-container"}>
         <LoginForm onSubmit={handleSubmit} />
-      </div>
-    </Box>
+      </AuthFormContainer>
+    </AuthLayout>
   );
 }

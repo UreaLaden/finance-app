@@ -6,6 +6,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { iAuthClient } from "../utils/models";
 
@@ -35,9 +36,14 @@ class AuthClient implements iAuthClient {
     this.auth = getAuth(this.app);
   }
 
-  async register(email: string, password: string) {
+  async register(email: string, password: string, name:string) {
     try {
-      await createUserWithEmailAndPassword(this.auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
+
+      if (this.auth.currentUser){
+        await updateProfile(this.auth.currentUser, {displayName: name});
+      }
+      this.currentUser = userCredential.user;
     } catch (error) {
       console.log("Registration Error", error);
       throw new Error("Failed to register. Please try again.");

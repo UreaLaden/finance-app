@@ -58,6 +58,23 @@ LoginMobile.args = {
   onSubmit: () => {},
   initialEntries: [paths.Login],
 };
+export const LoginTablet = Template.bind({});
+LoginTablet.parameters = {
+  ...Tablet.parameters,
+};
+LoginTablet.args = {
+  onSubmit: () => {},
+  initialEntries: [paths.Login],
+};
+
+export const LoginDesktop = Template.bind({});
+LoginDesktop.parameters = {
+  ...Desktop.parameters,
+};
+LoginDesktop.args = {
+  onSubmit: () => {},
+  initialEntries: [paths.Login],
+};
 
 export const SignupMobile = Template.bind({});
 SignupMobile.parameters = {

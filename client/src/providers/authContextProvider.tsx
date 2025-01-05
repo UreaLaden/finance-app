@@ -7,7 +7,8 @@ export const AuthProvider: FC<iAuthProvider> = ({ children }) => {
   const client = useMemo(() => new AuthClient(), []);
 
   const context = {
-    signup: (email: string, password: string) => client.register(email, password),
+    signup: (email: string, password: string, name: string) =>
+      client.register(email, password, name),
     login: (email: string, password: string) => client.login(email, password),
     logout: () => client.logout(),
     getUser: () => client.getUser(),

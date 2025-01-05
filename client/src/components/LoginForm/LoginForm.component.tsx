@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import styled from "styled-components";
 
 export const LoginFormContainer = styled.div`
@@ -7,7 +8,16 @@ export const LoginFormContainer = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 1em;
-  min-width: 300px;
+  flex: 1;
+  padding: 1em 1em 2em 1em;
+  min-width: 343px;
+  max-width: 343px;
+  height: fit-content;
+
+  @media (min-width: 768px) {
+    min-width: 560px;
+    max-width: 560px;
+  }
 
   & > button {
     margin-top: 1em;
@@ -24,3 +34,22 @@ export const LinkContainer = styled.span`
 `;
 
 export const LoginFormHeader = styled.h1``;
+
+export const AuthFormContainer = styled(Box)`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column: 1 / -1; /* Default for mobile and tablet */
+  grid-row: 1;
+  max-height: 100vh;
+  border-radius: 8px;
+  box-sizing: border-box;
+
+  // Resize anything larger than tablet
+  @media (min-width: 1041px) {
+    grid-column: 4 / span 2;
+    grid-row: 1;
+  }
+`;

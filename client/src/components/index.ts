@@ -2,3 +2,4 @@ export { ErrorBoundaryFallback } from "./ErrorBoundaryFallback/ErrorBoundaryFall
 export { InputField } from "./InputField/InputField";
 export { CustomButton } from "./CustomButton/CustomButton";
 export { LoginForm } from "./LoginForm/LoginForm";
+export { Banner } from "./Banner/Banner";
