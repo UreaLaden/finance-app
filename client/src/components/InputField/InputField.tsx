@@ -1,25 +1,24 @@
 import { InputFieldTypes } from "@/utils/helpers/constants";
 import { InputFieldProps } from "@/utils/models";
-import { TextField } from "@mui/material";
 import { FC, useMemo } from "react";
+import {
+  BasicInput,
+  DropdownInput,
+  WithIconInput,
+} from "./InputField.component";
 
-const InputField: FC<InputFieldProps> = (props) => {
+export const InputField: FC<InputFieldProps> = (props) => {
   const RenderedInput = useMemo(() => {
-    switch (props.type) {
+    switch (props.mode) {
       case InputFieldTypes.DROPDOWN:
-        return <TextField />;
-      case InputFieldTypes.WITH_ICON:
-        return <TextField />;
       case InputFieldTypes.WITH_COLOR:
-        return <TextField />;
-      case InputFieldTypes.PASSWORD:
-        return <TextField />;
+        return <DropdownInput {...props} />;
+      case InputFieldTypes.WITH_ICON:
+        return <WithIconInput {...props} />;
       default:
-        return <TextField />;
+        return <BasicInput {...props} />;
     }
-  }, [props.type]);
+  }, [props]);
 
   return RenderedInput;
 };
-
-export default InputField;

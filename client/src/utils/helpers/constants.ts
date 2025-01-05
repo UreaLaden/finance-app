@@ -1,5 +1,5 @@
 export const enum InputFieldTypes {
-  BASIC = "basic",
+  TEXT = "text",
   WITH_ICON = "icon",
   WITH_COLOR = "color",
   DROPDOWN = "dropdown",

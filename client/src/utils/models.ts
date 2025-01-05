@@ -54,14 +54,27 @@ export interface iProtectedRoute {
   component: React.FC;
 }
 
+type Color = `#${string}` | `var(--${string})`;
+
 export interface InputFieldProps {
-  type: InputFieldTypes;
+  mode: InputFieldTypes;
   label: string;
   placeholder: string;
+  theme?: Color;
   helperText?: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onClick?: (e: React.MouseEvent<HTMLInputElement>) => void;
-  error?: string;
+  error?: boolean;
   required?: boolean;
+  adornmentPosition?: "start" | "end";
+  dropdownContent?: iDropdownContent[];
+}
+
+export interface iDropdownContent {
+  contentMode: "color" | "text";
+  theme?:Color;
+  primaryText: string;
+  secondaryText?: string;
+  disable?:boolean;
 }

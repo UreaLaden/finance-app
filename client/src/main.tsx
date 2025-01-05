@@ -4,13 +4,17 @@ import "./index.css";
 import App from "./App.tsx";
 import { AuthProvider } from "./providers/authContextProvider.tsx";
 import ErrorBoundary from "./utils/classes/ErrorBoundary.tsx";
+import { theme } from "./globals.styles.ts";
+import { ThemeProvider } from "@mui/material/styles";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ErrorBoundary>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
-    </ErrorBoundary>
+    <ThemeProvider theme={theme}>
+      <ErrorBoundary>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </ErrorBoundary>
+    </ThemeProvider>
   </StrictMode>
 );
