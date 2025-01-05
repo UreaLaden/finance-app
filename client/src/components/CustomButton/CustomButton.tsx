@@ -16,6 +16,7 @@ export const CustomButton: FC<iButtonProps> = (props) => {
       case "primary":
         return (
           <Button
+            id={"custom-button-primary"}
             onClick={onButtonClick}
             variant="contained"
             color="primary"
@@ -27,6 +28,7 @@ export const CustomButton: FC<iButtonProps> = (props) => {
       case "secondary":
         return (
           <Button
+            id={"custom-button-secondary"}
             onClick={onButtonClick}
             variant="contained"
             color="secondary"
@@ -38,6 +40,7 @@ export const CustomButton: FC<iButtonProps> = (props) => {
       case "tertiary":
         return (
           <Button
+            id={"custom-button-tertiary"}
             onClick={onButtonClick}
             variant="text"
             endIcon={<SvgIcon name={"caretRight"} />}
@@ -49,6 +52,7 @@ export const CustomButton: FC<iButtonProps> = (props) => {
       default:
         return (
           <Button
+            id={"custom-button-destroy"}
             onClick={onButtonClick}
             variant="contained"
             color="error"

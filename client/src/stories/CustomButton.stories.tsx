@@ -19,7 +19,7 @@ const Template: StoryFn<iButtonProps> = (args: iButtonProps) => (
   <ThemeProvider theme={theme}>
     <div style={{
         width: "300px",
-        height: "100px",
+        height: "50px",
         boxShadow: "1px 1px 5px rgba(0,0,0,0.3)",
         padding: "2em",
     }}>

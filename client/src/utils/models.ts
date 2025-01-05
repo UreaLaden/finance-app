@@ -89,3 +89,7 @@ export interface iButtonProps {
   className?: string;
   fullWidth?: boolean;
 }
+
+export interface iLoginFormProps {
+  onSubmit: () => void;  
+}
