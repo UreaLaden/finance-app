@@ -38,9 +38,17 @@ export const LoginForm: FC<iLoginFormProps> = () => {
     }
   }, [location.pathname]);
 
+  const TitleText = useMemo(() => {
+    if (location.pathname === "/login") {
+      return "Login";
+    } else {
+      return "Sign Up";
+    }
+  },[location.pathname])
+
   return (
     <LoginFormContainer>
-      <LoginFormHeader>{ButtonText}</LoginFormHeader>
+      <LoginFormHeader>{TitleText}</LoginFormHeader>
       <InputField mode={InputFieldTypes.TEXT} label="Name" placeholder={""} />
       <InputField
         mode={InputFieldTypes.TEXT}
