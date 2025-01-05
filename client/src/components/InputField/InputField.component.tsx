@@ -21,13 +21,16 @@ export const BasicInput = forwardRef<HTMLInputElement, InputFieldProps>(
       ) {
         return "";
       }
+      if (props.mode === InputFieldTypes.PASSWORD && showPassword) {
+        return "text";
+      }
       return props.mode;
-    }, [props.mode]);
+    }, [props.mode,showPassword]);
 
     const Adornment = useMemo(() => {
       if (props.mode === InputFieldTypes.PASSWORD) {
         return (
-          <InputAdornment position={"end"} onClick={onTogglePassword}>
+          <InputAdornment position={"end"} onClick={onTogglePassword} className={'input-adornment'} aria-label="toggle visibility">
             <SvgIcon name={!showPassword ? "showPassword" : "hidePassword"} />
           </InputAdornment>
         );
@@ -40,7 +43,7 @@ export const BasicInput = forwardRef<HTMLInputElement, InputFieldProps>(
         <InputLabel>{props.label}</InputLabel>
         <TextField
           helperText={props.helperText}
-          inputRef={ref}
+          inputRef={ref}          
           error={!!props.error}
           placeholder={props.placeholder}
           variant={"outlined"}

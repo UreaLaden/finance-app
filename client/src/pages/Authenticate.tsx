@@ -1,7 +1,10 @@
-import { LoginForm } from "@/components";
+import { Banner, LoginForm } from "@/components";
+import { AuthLayout } from "@/components/Layout/Layout.component";
+import { AuthFormContainer } from "@/components/LoginForm/LoginForm.component";
+import SvgIcon from "@/utils/helpers/svgIcon";
 import { useAuth } from "@/utils/hooks/useAuth";
 import { paths } from "@/utils/routers/config";
-import { Box } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 import { useCallback, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -9,6 +12,7 @@ export function Authenticate() {
   const { login, getUser, signup } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+  const isDesktop = useMediaQuery("(min-width: 1041px)");
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -84,17 +88,20 @@ export function Authenticate() {
   );
 
   return (
-    <Box
-      sx={{
-        width: "100%",
-        display: "flex",
-        placeContent: "center",
-        margin: "1em",
-        padding: "1em 0 2em 0",
-        borderRadius: "8px",
-      }}
-    >
-      <LoginForm onSubmit={handleSubmit} />
-    </Box>
+    <AuthLayout className={"auth-layout"}>
+      {!isDesktop && <Banner />}
+      {isDesktop && (
+        <div className={"auth-illustration-container"}>
+          <SvgIcon
+            name={"illustrationAuthentication"}
+            className={"auth-illustration"}
+          />
+        </div>
+      )}
+
+      <AuthFormContainer className={"auth-container"}>
+        <LoginForm onSubmit={handleSubmit} />
+      </AuthFormContainer>
+    </AuthLayout>
   );
 }
