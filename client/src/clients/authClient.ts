@@ -47,6 +47,7 @@ class AuthClient implements iAuthClient {
   async login(email: string, password: string) {
     try {
       await signInWithEmailAndPassword(this.auth, email, password);
+      this.currentUser = await this.getUser();
     } catch (error) {
       console.log("Login error: ", error);
       throw new Error(
@@ -58,6 +59,7 @@ class AuthClient implements iAuthClient {
   async logout() {
     try {
       await signOut(this.auth);
+      this.currentUser = null;
     } catch (error) {
       console.log("Logout Error: ", error);
       throw new Error("Failed to logout. Please try again.");

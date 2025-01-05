@@ -15,6 +15,7 @@ dist-ssr
 *.local
 bin
 .env
+storybook-static
 
 # Editor directories and files
 .vscode/*
@@ -43,3 +44,4 @@ bin
 # Avoid your project being littered with annoying .DS_Store files!
 .DS_Store
 .prettierignore
+*storybook.log
