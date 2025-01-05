@@ -78,3 +78,14 @@ export interface iDropdownContent {
   secondaryText?: string;
   disable?:boolean;
 }
+
+export interface iButtonProps {
+  label: string;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  primaryColor?: Color;
+  secondaryColor?: Color;
+  disabled?: boolean;
+  type?: "primary" | "secondary" | "tertiary" | "destroy";
+  className?: string;
+  fullWidth?: boolean;
+}
