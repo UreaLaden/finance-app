@@ -13,7 +13,7 @@ export const ToolbarContainer = styled.div<{ $collapsed: boolean }>`
   display: flex;
   justify-content: space-around;
   align-items: end;
-  border-radius: 0 8px 8px 0;
+  border-radius: 8px 8px 0 0;
 
   // Desktop
   @media (min-width: 1041px) {
@@ -24,7 +24,7 @@ export const ToolbarContainer = styled.div<{ $collapsed: boolean }>`
     align-items: start;
     box-sizing: border-box;
     transition: width 0.3s ease-in-out;
-
+    border-radius: 0 8px 8px 0;
     & .toolbar-icon {
       padding: 0 2em;
     }
