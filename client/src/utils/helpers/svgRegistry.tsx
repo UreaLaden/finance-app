@@ -7,6 +7,7 @@ import { ReactComponent as CloseModal } from "@/assets/images/icon-close-modal.s
 import { ReactComponent as Ellipsis } from "@/assets/images/icon-ellipsis.svg";
 import { ReactComponent as FilterMobile } from "@/assets/images/icon-filter-mobile.svg";
 import { ReactComponent as HidePassword } from "@/assets/images/icon-hide-password.svg";
+import { ReactComponent as MinimizeMenu } from "@/assets/images/icon-minimize-menu.svg";
 import { ReactComponent as NavBudget } from "@/assets/images/icon-nav-budgets.svg";
 import { ReactComponent as NavOverview } from "@/assets/images/icon-nav-overview.svg";
 import { ReactComponent as NavPots } from "@/assets/images/icon-nav-pots.svg";
@@ -33,6 +34,7 @@ const svgIcons: Record<
   ellipsis: Ellipsis,
   filterMobile: FilterMobile,
   hidePassword: HidePassword,
+  minimizeMenu: MinimizeMenu,
   navBudget: NavBudget,
   navOverview: NavOverview,
   navPots: NavPots,
