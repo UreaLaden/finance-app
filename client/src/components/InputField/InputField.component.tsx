@@ -31,7 +31,7 @@ export const BasicInput = forwardRef<HTMLInputElement, InputFieldProps>(
       if (props.mode === InputFieldTypes.PASSWORD) {
         return (
           <InputAdornment position={"end"} onClick={onTogglePassword} className={'input-adornment'} aria-label="toggle visibility">
-            <SvgIcon name={!showPassword ? "showPassword" : "hidePassword"} />
+            <SvgIcon name={!showPassword ? "showPassword" : "hidePassword"} height={10} width={18} />
           </InputAdornment>
         );
       }
