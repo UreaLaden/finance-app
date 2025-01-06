@@ -10,17 +10,16 @@ const SvgIcon: FC<iSvgIconProps> = ({
   className,
   style,
 }) => {
-  const iconPath = svgIcons[name];
+  const SvgComponent = svgIcons[name];
 
-  if (!iconPath) {
+  if (!SvgComponent) {
     console.warn(`Icon ${name} not found in the SVG registry.`);
     return null;
   }
 
   return (
-    <img
-      src={iconPath}
-      alt={`${name} icon`}
+    <SvgComponent
+      title={name}
       width={width}
       height={height}
       className={className}

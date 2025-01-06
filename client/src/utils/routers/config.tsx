@@ -1,4 +1,3 @@
-import { iPageConfig } from "../models";
 import {
   Budgets,
   Overview,
@@ -8,10 +7,12 @@ import {
   Authenticate,
 } from "@/pages";
 
-
 import { ProtectedRoute } from "./protectedRoute";
+import { Layout } from "./Layout";
+import { iPageConfig } from "../models";
 
 export const paths = {
+  Home: "/",
   Overview: "/",
   Transactions: "/transactions",
   Budgets: "/budgets",
@@ -23,39 +24,50 @@ export const paths = {
 
 export const AppRoutes: iPageConfig[] = [
   {
-    name: "Overview",
-    path: paths.Overview,
-    element: <ProtectedRoute component={Overview} />,
-    iconName: "navOverview",
-    isActive: true,
-  },
-  {
-    name: "Transactions",
-    path: paths.Transactions,
-    element: <ProtectedRoute component={Transactions} />,
-    iconName: "navTransactions",
-    isActive: true,
-  },
-  {
-    name: "Budgets",
-    path: paths.Budgets,
-    element: <ProtectedRoute component={Budgets} />,
-    iconName: "navBudget",
-    isActive: true,
-  },
-  {
-    name: "Pots",
-    path: paths.Pots,
-    element: <ProtectedRoute component={Pots} />,
-    iconName: "navPots",
-    isActive: true,
-  },
-  {
-    name: "Recurring Bills",
-    path: paths.RecurringBills,
-    element: <ProtectedRoute component={RecurringBills} />,
-    iconName: "navRecurringBills",
-    isActive: true,
+    path: paths.Home,
+    element: <Layout />,
+    children: [
+      {
+        name: "Overview",
+        path: paths.Overview,
+        element: <ProtectedRoute component={Overview} />,
+        iconName: "navOverview",
+        isActive: true,
+        children: [],
+      },
+      {
+        name: "Transactions",
+        path: paths.Transactions,
+        element: <ProtectedRoute component={Transactions} />,
+        iconName: "navTransactions",
+        isActive: true,
+        children: [],
+      },
+      {
+        name: "Budgets",
+        path: paths.Budgets,
+        element: <ProtectedRoute component={Budgets} />,
+        iconName: "navBudget",
+        isActive: true,
+        children: [],
+      },
+      {
+        name: "Pots",
+        path: paths.Pots,
+        element: <ProtectedRoute component={Pots} />,
+        iconName: "navPots",
+        isActive: true,
+        children: [],
+      },
+      {
+        name: "Recurring Bills",
+        path: paths.RecurringBills,
+        element: <ProtectedRoute component={RecurringBills} />,
+        iconName: "navRecurringBills",
+        isActive: true,
+        children: [],
+      },
+    ],
   },
   {
     name: "Login",
@@ -63,6 +75,7 @@ export const AppRoutes: iPageConfig[] = [
     iconName: "illustrationAuthentication",
     element: <Authenticate />,
     isActive: false,
+    children: [],
   },
   {
     name: "Signup",
@@ -70,5 +83,6 @@ export const AppRoutes: iPageConfig[] = [
     iconName: "illustrationAuthentication",
     element: <Authenticate />,
     isActive: false,
+    children: [],
   },
 ];

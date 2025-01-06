@@ -34,11 +34,12 @@ export interface iFallbackComponent {
 }
 
 export type iPageConfig = {
-  name: string;
+  name?: string;
   path: string;
-  element?: React.ReactNode;
-  iconName: string;
-  isActive: boolean;
+  element: React.ReactNode;
+  iconName?: string;
+  isActive?: boolean;
+  children: iPageConfig[];
 };
 
 export interface iSvgIconProps {
