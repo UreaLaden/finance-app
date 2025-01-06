@@ -27,11 +27,13 @@ export const ToolbarSelector = styled(Box)<{ $active?: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.3s ease-in-out;
 
   & .toolbar-icon {
-  transform: ${({ $active }) => ($active ? "scale(1.5)" : "scale(1)")};
-    path{
-    fill: ${({ $active }) => ($active ? "var(--green-primary)" : "var(--grey-300)")};
+    transform: ${({ $active }) => ($active ? "scale(1.5)" : "scale(1)")};
+    path {
+      fill: ${({ $active }) =>
+        $active ? "var(--green-primary)" : "var(--grey-300)"};
     }
   }
 `;
