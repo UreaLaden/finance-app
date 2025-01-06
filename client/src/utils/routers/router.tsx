@@ -2,12 +2,7 @@ import ErrorBoundary from "../classes/ErrorBoundary";
 import { AppRoutes } from "./config";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-const configRoutes = AppRoutes.map(({ path, element }) => ({
-  path,
-  element,
-}));
-
-const browserRouter = createBrowserRouter(configRoutes);
+const browserRouter = createBrowserRouter(AppRoutes);
 
 export function Router() {
   return (
