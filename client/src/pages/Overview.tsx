@@ -1,36 +1,30 @@
-import { useAuth } from "@/utils/hooks/useAuth";
-import { paths } from "@/utils/routers/config";
-import { useNavigate } from "react-router-dom";
+import { SummarySection } from "@/components";
+import { Header } from "@/components/Sections/Header/Header";
+import { iBalanceCard } from "@/utils/models";
 
 export function Overview() {
-  const { logout, getUser } = useAuth();
-  const navigate = useNavigate();
+  const data: iBalanceCard[] = [
+    {
+      title: "Current Balance",
+      amount: 1775.0,
+      highlight: true,
+    },
+    {
+      title: "Income",
+      amount: 2337.79,
+      highlight: false,
+    },
+    {
+      title: "Expense",
+      amount: 505.15,
+      highlight: false,
+    },
+  ];
 
-  const handleSignout = async () => {
-    try {
-      await logout();
-      const user = await getUser();
-      console.log(user);
-      if (!user) {
-        navigate(paths.Login);
-      }
-    } catch (error) {
-      console.error("Error signing out", error);
-    }
-  };
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        width: "100vw",
-        height: "100vh",
-        justifyContent: "center",
-      }}
-    >
-      <h1>Overview</h1>
-      <button onClick={handleSignout}>Logout</button>
-    </div>
+    <>
+      <Header />
+      <SummarySection data={data} />
+    </>
   );
 }

@@ -12,3 +12,10 @@ export function toTitleCase(str: string): string {
       txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase()
   );
 }
+
+export function toCurrency(amount: number): string {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(amount);
+}

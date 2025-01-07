@@ -14,6 +14,7 @@ export const ToolbarContainer = styled.div<{ $collapsed: boolean }>`
   justify-content: space-around;
   align-items: end;
   border-radius: 8px 8px 0 0;
+  left: 0;
 
   // Desktop
   @media (min-width: 1042px) {

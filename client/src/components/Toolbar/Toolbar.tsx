@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react";
+import { FC, useCallback, useMemo, useState } from "react";
 import {
   LogoutButton,
   ToggleButton,
@@ -11,7 +11,11 @@ import SvgIcon from "@/utils/helpers/svgIcon";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "@/utils/hooks/useAuth";
 
-export const Toolbar = () => {
+export interface iToolbarProps {
+  onCollapse: (collapsed: boolean) => void;
+}
+
+export const Toolbar: FC<iToolbarProps> = ({ onCollapse }) => {
   const location = useLocation();
   const { logout, getUser } = useAuth();
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -22,7 +26,8 @@ export const Toolbar = () => {
 
   const handleToggleCollapse = useCallback(() => {
     setCollapsed((prev) => !prev);
-  }, []);
+    onCollapse(!collapsed);
+  }, [collapsed, onCollapse]);
 
   const handleNavigation = useCallback(
     (path: string) => {
@@ -45,15 +50,15 @@ export const Toolbar = () => {
   };
 
   const Content = useMemo(() => {
-    return AppRoutes[0].children.map((path) => {
+    return AppRoutes[0].children?.map((path) => {
       const isSelected = location.pathname === path.path;
-      return (
+      return path.isActive && (
         <ToolbarSelector
           key={path.name}
           $active={location.pathname === path.path}
           className={"toolbar-selector"}
           $collapsed={collapsed}
-          onClick={() => handleNavigation(path.path)}
+          onClick={() => handleNavigation(path.path!)}
         >
           <SvgIcon
             name={path.iconName!}
