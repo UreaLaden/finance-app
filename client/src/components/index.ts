@@ -6,3 +6,5 @@ export { Banner } from "./Banner/Banner";
 export { Toolbar } from "./Toolbar/Toolbar";
 export { BalanceCard } from "./BalanceCard/BalanceCard";
 export { SummarySection } from "./Sections/Summary/SummarySection";
+export { Header } from "./Sections/Header/Header";
+export { Pot } from "./Pot/Pot";

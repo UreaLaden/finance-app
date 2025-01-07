@@ -7,6 +7,9 @@ export const HeaderContainer = styled.header`
   line-height: var(--line-height-tight);
   padding: 0.5em 0;
   width: 100%;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
 
   // Desktop
   @media (min-width: 1440px) {

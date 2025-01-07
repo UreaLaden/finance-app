@@ -57,7 +57,7 @@ export interface iProtectedRoute {
   component: React.FC;
 }
 
-type Color = `#${string}` | `var(--${string})`;
+export type Color = `#${string}` | `var(--${string})`;
 
 export interface InputFieldProps {
   mode: InputFieldTypes;
@@ -105,4 +105,18 @@ export interface iBalanceCard {
 
 export interface iSummarySection {
   data: iBalanceCard[];
+}
+
+export interface iHeaderProps {
+  showAdd?: boolean;
+  onClick?: () => void;
+}
+
+export interface iPot {
+  //FIXME: Replace this interface with Protobuf generated interface
+  // This is a placeholder interface
+  title:string;
+  currentAmount:number;
+  targetAmount:number;
+  theme:Color;
 }
