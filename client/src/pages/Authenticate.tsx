@@ -96,6 +96,8 @@ export function Authenticate() {
           <SvgIcon
             name={"illustrationAuthentication"}
             className={"auth-illustration"}
+            width={500}
+            height={920}
           />
           <div className={"auth-illustration-text-container"}>
             <Typography variant={"h1"} sx={{

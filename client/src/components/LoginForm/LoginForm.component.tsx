@@ -50,6 +50,12 @@ export const AuthFormContainer = styled(Box)`
   // Resize anything larger than tablet
   @media (min-width: 1041px) {
     grid-column: 4 / -2;
-    grid-row: 6;
+    grid-row: 5;
+  }
+
+  // Resize anything larger than desktop
+  @media (min-width: 1441px) {
+    grid-column: 4 / -3;
+    grid-row: 5;
   }
 `;

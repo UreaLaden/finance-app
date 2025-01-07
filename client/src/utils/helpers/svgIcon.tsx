@@ -19,6 +19,8 @@ const SvgIcon: FC<iSvgIconProps> = ({
 
   return (
     <SvgComponent
+      preserveAspectRatio={"none"}
+      viewBox={`0 0 ${width} ${height}`}
       title={name}
       width={width}
       height={height}

@@ -20,6 +20,7 @@ import { ReactComponent as Selected } from "@/assets/images/icon-selected.svg";
 import { ReactComponent as ShowPassword } from "@/assets/images/icon-show-password.svg";
 import { ReactComponent as SortMobile } from "@/assets/images/icon-sort-mobile.svg";
 import { ReactComponent as IllustrationAuthentication } from "@/assets/images/illustration-authentication.svg";
+import { ReactComponent as ExitToAppIcon } from "@/assets/images/icon-exit.svg";
 
 const svgIcons: Record<
   string,
@@ -32,6 +33,7 @@ const svgIcons: Record<
   caretRight: CaretRight,
   closeModal: CloseModal,
   ellipsis: Ellipsis,
+  exit: ExitToAppIcon,
   filterMobile: FilterMobile,
   hidePassword: HidePassword,
   minimizeMenu: MinimizeMenu,
