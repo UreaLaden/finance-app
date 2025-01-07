@@ -17,7 +17,7 @@ export const Layout = () => {
     <div>
       <Toolbar onCollapse={onSidebarToggle} />
       <MainContent className={"main-content"} $isSidebarOpen={isSidebarOpen}>
-        <MainInnerContent>
+        <MainInnerContent className={"main-inner-content"}>
           <Outlet />
         </MainInnerContent>
       </MainContent>

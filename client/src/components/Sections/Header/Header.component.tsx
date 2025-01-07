@@ -5,6 +5,12 @@ export const HeaderContainer = styled.header`
   font-size: var(--font-size-xxlarge);
   font-weight: bold;
   line-height: var(--line-height-tight);
-  padding:.5em 0;
-  width:100%;
+  padding: 0.5em 0;
+  width: 100%;
+
+  // Desktop
+  @media (min-width: 1440px) {
+    grid-column: 1 / span 6;
+    grid-row: 1;
+  }
 `;

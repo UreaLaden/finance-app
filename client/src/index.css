@@ -70,7 +70,7 @@ body {
   box-sizing: border-box;
 
   height: 100%;
-  width:100%;
+  width: 100%;
 }
 
 .auth-illustration-container {
@@ -78,7 +78,7 @@ body {
   grid-column: 1 / span 3;
   grid-row: 1 / -1;
   border-radius: 8px;
-  padding:1em;
+  padding: 1em;
   /* padding:1em 0 0 1em; */
 }
 
@@ -109,4 +109,50 @@ body {
   display: flex;
   flex-direction: column;
   row-gap: 1em;
+}
+
+.summary-content-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1rem;
+  grid-template-rows: repeat(4, calc((100vw - 45em) / 4))
+}
+
+.pots {
+  height: calc((100vw - 45em) / 4);
+  min-width: 324px;
+  background-color: var(--blue-secondary);
+  border-radius: 8px;
+  grid-column: 1/ span 4;
+  grid-row: 1/span 1;
+}
+
+.budgets {
+  border-radius: 8px;
+  height: calc((100vw - 45em) / 2);
+  min-width: 410px;
+  background-color: var(--turquoise-secondary);
+  grid-column: 5/-1;
+  grid-row: 1/ span 2;
+
+}
+
+.transactions {
+  height: auto;
+  max-height: 100%;
+  min-width: 608px;
+  background-color: var(--purple-secondary);
+  border-radius: 8px;
+  grid-column: 1/ span 4;
+  grid-row: 2/ -1;
+}
+
+
+.recurring-bills {
+  min-height: 482px;
+  min-width: 482px;
+  background-color: var(--brown-secondary);
+  border-radius: 8px;
+  grid-column: 5/-1;
+  grid-row: 3 / -1;
 }

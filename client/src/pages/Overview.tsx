@@ -25,6 +25,12 @@ export function Overview() {
     <>
       <Header />
       <SummarySection data={data} />
+      <div className={"summary-content-container"}>
+        <div className={"pots"}>Pots</div>
+        <div className={"budgets"}>Budgets</div>
+        <div className={"transactions"}>Transactions</div>
+        <div className={"recurring-bills"}>Recurring Bills</div>
+      </div>
     </>
   );
 }

@@ -10,15 +10,15 @@ export const MainContent = styled.div<{ $isSidebarOpen: boolean }>`
   height: calc(100vh - 74px);
 
   // Tablet
-    @media (min-width: 768px) {
-        height: calc(100vh - 74px);
-    }
+  @media (min-width: 768px) {
+    height: calc(100vh - 74px);
+  }
 
   // Desktop
   @media (min-width: 1042px) {
     width: ${({ $isSidebarOpen }) =>
       $isSidebarOpen ? "calc(100vw - 292px)" : "calc(100vw - 92px)"};
-    height:auto;
+    height: auto;
   }
 `;
 
@@ -27,9 +27,17 @@ export const MainInnerContent = styled(Box)`
   width: 100%;
   height: auto;
   padding: 1em;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
 
   // Tablet and Desktop
   @media (min-width: 768px) {
     padding: 1em 2em 0 2em;
+}
+
+// Desktop
+@media (min-width: 1440px) {
+      padding: 1em 2em 2em 3em;
   }
 `;
