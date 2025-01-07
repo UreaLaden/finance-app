@@ -1,6 +1,7 @@
 import { User } from "firebase/auth";
 import React from "react";
 import { InputFieldTypes } from "./helpers/constants";
+import { RouteObject } from "react-router-dom";
 
 export interface iAuthClient {
   register: (email: string, password: string, name: string) => Promise<void>;
@@ -33,14 +34,15 @@ export interface iFallbackComponent {
   onReset: () => void;
 }
 
-export type iPageConfig = {
-  name?: string;
-  path: string;
-  element: React.ReactNode;
-  iconName?: string;
-  isActive?: boolean;
-  children: iPageConfig[];
+export type iRouteConfig = {
+  iconName?: string; // Optional name of the icon
+  isActive?: boolean; // Optional flag to indicate active status
+  name?: string; // Optional name of the route
+  children?: iRouteConfig[]; // Optional children of the route
+  path?: string; // Path of the route
 };
+
+export type iPageConfig = iRouteConfig & RouteObject;
 
 export interface iSvgIconProps {
   name: string;
@@ -93,4 +95,14 @@ export interface iButtonProps {
 
 export interface iLoginFormProps {
   onSubmit: (name?: string, email?: string, password?: string) => void;
+}
+
+export interface iBalanceCard {
+  title: string;
+  amount: number;
+  highlight?: boolean;
+}
+
+export interface iSummarySection {
+  data: iBalanceCard[];
 }

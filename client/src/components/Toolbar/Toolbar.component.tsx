@@ -13,10 +13,11 @@ export const ToolbarContainer = styled.div<{ $collapsed: boolean }>`
   display: flex;
   justify-content: space-around;
   align-items: end;
-  border-radius: 0 8px 8px 0;
+  border-radius: 8px 8px 0 0;
+  left: 0;
 
   // Desktop
-  @media (min-width: 1041px) {
+  @media (min-width: 1042px) {
     width: ${({ $collapsed }) => ($collapsed ? "100px" : "300px")};
     height: 100vh;
     display: block;
@@ -24,6 +25,13 @@ export const ToolbarContainer = styled.div<{ $collapsed: boolean }>`
     align-items: start;
     box-sizing: border-box;
     transition: width 0.3s ease-in-out;
+    border-radius: 0 8px 8px 0;
+
+    & .logout-button {
+      position: absolute;
+      bottom: 1em;
+      padding-left: 40%;
+    }
 
     & .toolbar-icon {
       padding: 0 2em;
@@ -104,8 +112,40 @@ export const ToggleButton = styled.div<{ $collapsed: boolean }>`
   display: flex;
   position: absolute;
   bottom: 4em;
+  cursor: pointer;
 
   & .collapse-icon {
+    transform: rotate(0deg);
+    padding: 0 2em;
+    opacity: 1;
+    transition: transform 0.5s ease, opacity 0.3s ease;
+  }
+
+  & .expand-icon {
+    padding: 0 2em;
+    transform: rotate(180deg);
+    opacity: 1;
+    transition: transform 0.5s ease, opacity 0.3s ease;
+  }
+
+  & .toolbar-selector-text {
+    transition: opacity 1s ease, width 1s ease;
+    opacity: ${({ $collapsed }) => ($collapsed ? "0" : "1")};
+    width: ${({ $collapsed }) => ($collapsed ? "0" : "auto")};
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+`;
+
+export const LogoutButton = styled.div<{ $collapsed: boolean }>`
+  display: flex;
+  position: absolute;
+  bottom: 1em;
+  cursor: pointer;
+  align-items: center;
+
+  & .logout-icon {
     transform: rotate(0deg);
     padding: 0 2em;
     opacity: 1;

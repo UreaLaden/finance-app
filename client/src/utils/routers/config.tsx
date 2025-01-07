@@ -10,10 +10,11 @@ import {
 import { ProtectedRoute } from "./protectedRoute";
 import { Layout } from "./Layout";
 import { iPageConfig } from "../models";
+import { Navigate } from "react-router-dom";
 
 export const paths = {
   Home: "/",
-  Overview: "/",
+  Overview: "/overview",
   Transactions: "/transactions",
   Budgets: "/budgets",
   Pots: "/pots",
@@ -27,6 +28,11 @@ export const AppRoutes: iPageConfig[] = [
     path: paths.Home,
     element: <Layout />,
     children: [
+      {
+        path: paths.Home,
+        element: <Navigate to={paths.Overview} />,
+        isActive:false,
+      },
       {
         name: "Overview",
         path: paths.Overview,
