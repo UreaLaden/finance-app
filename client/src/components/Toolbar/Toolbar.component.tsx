@@ -71,6 +71,15 @@ export const ToolbarSelector = styled(Box)<{
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 
+  &:hover {
+    color: ${({ $active }) => ($active ? "var(--grey-900)" : "var(--white)")};
+
+    .toolbar-icon path {
+      fill: ${({ $active }) =>
+        $active ? "var(--green-primary)" : "var(--white)"};
+    }
+  }
+
   // Tablet
   @media (min-width: 769px) {
     width: 104px;
@@ -102,6 +111,7 @@ export const ToolbarSelector = styled(Box)<{
   & .toolbar-icon {
     transform: ${({ $active }) => ($active ? "scale(1.5)" : "scale(1)")};
     path {
+      transition: fill 0.3s ease-in-out;
       fill: ${({ $active }) =>
         $active ? "var(--green-primary)" : "var(--grey-300)"};
     }

@@ -1,10 +1,11 @@
-import { useMemo } from "react";
+import { FC, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import { AppRoutes } from "@/utils/routers/config";
-import { iRouteConfig } from "@/utils/models";
+import { iHeaderProps, iRouteConfig } from "@/utils/models";
 import { HeaderContainer } from "./Header.component";
+import { CustomButton } from "@/components/CustomButton/CustomButton";
 
-export const Header = () => {
+export const Header: FC<iHeaderProps> = ({ showAdd, onClick }) => {
   const location = useLocation();
 
   const title = useMemo(() => {
@@ -17,5 +18,22 @@ export const Header = () => {
     return "Not Found";
   }, [location.pathname]);
 
-  return <HeaderContainer>{title}</HeaderContainer>;
+  const onAddButtonSelected = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
+
+  return (
+    <HeaderContainer>
+      {title}
+      {showAdd && (
+        <CustomButton
+          onClick={onAddButtonSelected}
+          label={`+ Add New ${title?.substring(0, title.length - 1)}`}
+          type={"primary"}
+        />
+      )}
+    </HeaderContainer>
+  );
 };

@@ -6,3 +6,8 @@ export { Banner } from "./Banner/Banner";
 export { Toolbar } from "./Toolbar/Toolbar";
 export { BalanceCard } from "./BalanceCard/BalanceCard";
 export { SummarySection } from "./Sections/Summary/SummarySection";
+export { Header } from "./Sections/Header/Header";
+export { Pot } from "./Pot/Pot";
+export { Budget } from "./Budget/Budget";
+export { RecurringBillSummary } from "./Sections/RecurringBillSummary/RecurringBillSummary";
+export { TransactionTable } from "./TransactionTable/TransactionTable";

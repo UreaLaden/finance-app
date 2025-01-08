@@ -57,7 +57,7 @@ export interface iProtectedRoute {
   component: React.FC;
 }
 
-type Color = `#${string}` | `var(--${string})`;
+export type Color = `#${string}` | `var(--${string})`;
 
 export interface InputFieldProps {
   mode: InputFieldTypes;
@@ -105,4 +105,57 @@ export interface iBalanceCard {
 
 export interface iSummarySection {
   data: iBalanceCard[];
+}
+
+export interface iHeaderProps {
+  showAdd?: boolean;
+  onClick?: () => void;
+}
+
+export interface iPot {
+  //FIXME: Replace this interface with Protobuf generated interface
+  // This is a placeholder interface
+  title: string;
+  currentAmount: number;
+  targetAmount: number;
+  theme: Color;
+}
+
+export interface iTransaction {
+  //FIXME: Replace this interface with Protobuf generated interface
+  // This is a placeholder interface
+  id: string;
+  avatar: string;
+  name: string;
+  date: Date;
+  amount: number;
+  recurring: boolean;
+}
+
+export interface iBudget {
+  //FIXME: Replace this interface with Protobuf generated interface
+  // This is a placeholder interface
+  id: string;
+  category: string;
+  maximum: number;
+  spent: number;
+  remaining: number;
+  theme: Color;
+  transactions: iTransaction[];
+}
+
+export interface iBudgetSummary {
+  budgets: iBudget[];
+}
+
+
+export interface iRecurringBillSummaryProps {
+  // FIXME: Replace this interface with Protobuf generated interface
+  // This is a placeholder interface
+  // List of recurring bills
+  bills: iTransaction[];
+}
+
+export interface iTransactionTableProps {
+  transactions: iTransaction[];
 }

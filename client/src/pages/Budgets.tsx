@@ -1,35 +1,66 @@
-import { useAuth } from "@/utils/hooks/useAuth";
-import { paths } from "@/utils/routers/config";
-import { useNavigate } from "react-router-dom";
+import { Budget, Header } from "@/components";
+import { BudgetSummary } from "@/components/Sections/BudgetSummary/BudgetSummary";
+import { iBudget } from "@/utils/models";
+import { useMemo } from "react";
 
 export function Budgets() {
-  const { logout, getUser } = useAuth();
-  const navigate = useNavigate();
-  const handleSignout = async () => {
-    try {
-      await logout();
-      const user = await getUser();
-      console.log(user);
-      if (!user) {
-        navigate(paths.Login);
-      }
-    } catch (error) {
-      console.error("Error signing out", error);
-    }
+  const onAddBudget = () => {
+    console.log("Add Budget - Not yet implemented");
   };
+
+  const budgets: iBudget[] = useMemo(
+    () => [
+      {
+        category: "Entertainment",
+        maximum: 50,
+        theme: "var(--purple-primary)",
+        id: "",
+        spent: 0,
+        remaining: 0,
+        transactions: [],
+      },
+      {
+        category: "Bills",
+        maximum: 200,
+        theme: "var(--red-primary)",
+        id: "",
+        spent: 0,
+        remaining: 0,
+        transactions: [],
+      },
+      {
+        category: "Dining Out",
+        maximum: 100,
+        theme: "var(--blue-secondary)",
+        id: "",
+        spent: 0,
+        remaining: 0,
+        transactions: [],
+      },
+      {
+        category: "Personal Care",
+        maximum: 100,
+        theme: "var(--magenta-secondary)",
+        id: "",
+        spent: 0,
+        remaining: 0,
+        transactions: [],
+      },
+    ],
+    []
+  );
+
+  const Budgets = useMemo(() => {
+    return budgets.map((budget, index) => <Budget key={index} {...budget} />);
+  }, [budgets]);
+
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        width: "100vw",
-        height: "100vh",
-        justifyContent: "center",
-      }}
-    >
-      <h1>Budgets</h1>
-      <button onClick={handleSignout}>Logout</button>
-    </div>
+    <>
+      <Header showAdd={true} onClick={onAddBudget} />
+      <div className={"budget-content-container"}>
+        <BudgetSummary budgets={budgets} />
+        {Budgets}
+      </div>
+    </>
   );
 }
