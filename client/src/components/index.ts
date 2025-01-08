@@ -8,3 +8,4 @@ export { BalanceCard } from "./BalanceCard/BalanceCard";
 export { SummarySection } from "./Sections/Summary/SummarySection";
 export { Header } from "./Sections/Header/Header";
 export { Pot } from "./Pot/Pot";
+export { Budget } from "./Budget/Budget";

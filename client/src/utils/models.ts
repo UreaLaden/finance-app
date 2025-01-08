@@ -115,8 +115,35 @@ export interface iHeaderProps {
 export interface iPot {
   //FIXME: Replace this interface with Protobuf generated interface
   // This is a placeholder interface
-  title:string;
-  currentAmount:number;
-  targetAmount:number;
-  theme:Color;
+  title: string;
+  currentAmount: number;
+  targetAmount: number;
+  theme: Color;
+}
+
+export interface iTransaction {
+  //FIXME: Replace this interface with Protobuf generated interface
+  // This is a placeholder interface
+  id: string;
+  avatar: string;
+  name: string;
+  date: Date;
+  amount: number;
+  recurring: boolean;
+}
+
+export interface iBudget {
+  //FIXME: Replace this interface with Protobuf generated interface
+  // This is a placeholder interface
+  id: string;
+  category: string;
+  maximum: number;
+  spent: number;
+  remaining: number;
+  theme: Color;
+  transactions: iTransaction[];
+}
+
+export interface iBudgetSummary {
+  budgets: iBudget[];
 }

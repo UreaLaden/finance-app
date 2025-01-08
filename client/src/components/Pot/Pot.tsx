@@ -2,12 +2,7 @@ import { iPot } from "@/utils/models";
 import { FC } from "react";
 import { PotContainer, ThemeIndicator } from "./Pot.component";
 
-export const Pot: FC<iPot> = ({
-  title,
-  currentAmount,
-  targetAmount,
-  theme,
-}) => {
+export const Pot: FC<iPot> = ({ title, theme }) => {
   return (
     <PotContainer $theme={theme}>
       <div>

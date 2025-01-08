@@ -140,21 +140,22 @@ body {
   }
 }
 
-.budgets-content-container {
+.budget-content-container {
   display: flex;
   flex-direction: column;
   gap: 1em;
-  border:1px solid orangered;
 }
+
 
 @media (min-width: 1440px) {
   .budget-content-container {
     display: grid;
     grid-template-columns: 35% 65%;
     gap: 1em;
-
+    
   }
 }
+
 
 .pots {
   height: calc((100vw - 45em) / 4);
