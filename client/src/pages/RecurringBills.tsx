@@ -1,35 +1,60 @@
-import { useAuth } from "@/utils/hooks/useAuth";
-import { paths } from "@/utils/routers/config";
-import { useNavigate } from "react-router-dom";
+import { Header, RecurringBillSummary } from "@/components";
+import { iTransaction } from "@/utils/models";
+import { useMemo } from "react";
 
-export function RecurringBills(){
-    const { logout,getUser } = useAuth();
-    const navigate = useNavigate();
-    const handleSignout = async () => {
-        try {
-          await logout();
-          const user = await getUser();
-          console.log(user);
-          if (!user) {
-            navigate(paths.Login);
-          }
-        } catch (error) {
-          console.error("Error signing out", error);
-        }
-      };
-      return (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            width: "100vw",
-            height: "100vh",
-            justifyContent: "center",
-          }}
-        >
-          <h1>Recurring Bills</h1>
-          <button onClick={handleSignout}>Logout</button>
-        </div>
-      );
+export function RecurringBills() {
+  const bills: iTransaction[] = useMemo(() => {
+    const result:iTransaction[] = [
+      {
+        id: "1",
+        amount: 100,
+        name: "Rent",
+        date: new Date(),
+        avatar: "Monthly Rent",
+        recurring: false
+      },
+      {
+        id: "2",
+        amount: 50,
+        name: "Subscription",
+        date: new Date(),
+        avatar: "Monthly Netflix Subscription",
+        recurring: false
+      },
+      {
+        id: "3",
+        amount: 200,
+        name: "Utilities",
+        date: new Date(),
+        avatar: "Monthly Utility Bill",
+        recurring: false
+      },
+      {
+        id: "4",
+        amount: 100,
+        name: "Insurance",
+        date: new Date(),
+        avatar: "Monthly Insurance Premium",
+        recurring: false
+      },
+      {
+        id: "5",
+        amount: 200.05,
+        name: "Insurance",
+        date: new Date(),
+        avatar: "Monthly Insurance Premium",
+        recurring: false
+      },
+
+
+    ];
+    return result;
+  }, []);
+
+  return (
+    <>
+      <Header />
+      <RecurringBillSummary bills={bills} />     
+    </>
+  );
 }

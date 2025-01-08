@@ -147,3 +147,15 @@ export interface iBudget {
 export interface iBudgetSummary {
   budgets: iBudget[];
 }
+
+
+export interface iRecurringBillSummaryProps {
+  // FIXME: Replace this interface with Protobuf generated interface
+  // This is a placeholder interface
+  // List of recurring bills
+  bills: iTransaction[];
+}
+
+export interface iTransactionTableProps {
+  transactions: iTransaction[];
+}

@@ -9,3 +9,5 @@ export { SummarySection } from "./Sections/Summary/SummarySection";
 export { Header } from "./Sections/Header/Header";
 export { Pot } from "./Pot/Pot";
 export { Budget } from "./Budget/Budget";
+export { RecurringBillSummary } from "./Sections/RecurringBillSummary/RecurringBillSummary";
+export { TransactionTable } from "./TransactionTable/TransactionTable";
