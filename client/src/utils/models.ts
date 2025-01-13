@@ -159,3 +159,16 @@ export interface iRecurringBillSummaryProps {
 export interface iTransactionTableProps {
   transactions: iTransaction[];
 }
+
+export interface iDisplayCardProps {
+  className:string;
+  children: React.ReactNode;
+  header:string;
+  onHeaderClick:()=>void;
+  buttonLabel:string;
+}
+
+export interface iBillCardProps {
+  type:"paid" | "upcoming" | "due";
+  bills: iTransaction[];
+}

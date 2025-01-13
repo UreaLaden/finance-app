@@ -113,6 +113,9 @@ export const theme = createTheme({
             color: "var(--grey-900)",
             backgroundColor: "transparent",
             boxShadow: "none",
+            "svg path": {
+              fill: "var(--grey-900)",
+            },
           },
         },
         endIcon: {

@@ -84,7 +84,7 @@ export const Toolbar: FC<iToolbarProps> = ({ onCollapse }) => {
       {Content}
       {isDesktop && (
         <>
-          <ToggleButton onClick={handleToggleCollapse} $collapsed={collapsed}>
+          <ToggleButton onClick={handleToggleCollapse} $collapsed={collapsed} className={"toggle-button"}>
             <SvgIcon
               className={collapsed ? "expand-icon" : "collapse-icon"}
               name={"minimizeMenu"}

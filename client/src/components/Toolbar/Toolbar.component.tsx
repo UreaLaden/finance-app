@@ -128,18 +128,28 @@ export const ToggleButton = styled.div<{ $collapsed: boolean }>`
     transform: rotate(0deg);
     padding: 0 2em;
     opacity: 1;
-    transition: transform 0.5s ease, opacity 0.3s ease;
+    transition: transform 0.5s ease, opacity 0.3s ease, fill 0.3s ease-in-out;
   }
 
   & .expand-icon {
     padding: 0 2em;
     transform: rotate(180deg);
     opacity: 1;
-    transition: transform 0.5s ease, opacity 0.3s ease;
+    transition: transform 0.5s ease, opacity 0.3s ease, fill 0.3s ease-in-out;
+  }
+
+  &:hover {
+    .toolbar-selector-text {
+      color: var(--white);
+    }
+
+    svg path {
+      fill: var(--white);
+    }
   }
 
   & .toolbar-selector-text {
-    transition: opacity 1s ease, width 1s ease;
+    transition: opacity 1s ease, width 1s ease, color 0.3s ease-in-out;
     opacity: ${({ $collapsed }) => ($collapsed ? "0" : "1")};
     width: ${({ $collapsed }) => ($collapsed ? "0" : "auto")};
     overflow: hidden;
@@ -155,22 +165,32 @@ export const LogoutButton = styled.div<{ $collapsed: boolean }>`
   cursor: pointer;
   align-items: center;
 
+  &:hover {
+    .toolbar-selector-text {
+      color: var(--white);
+    }
+
+    svg path {
+      fill: var(--white);
+    }
+  }
+
   & .logout-icon {
     transform: rotate(0deg);
     padding: 0 2em;
     opacity: 1;
-    transition: transform 0.5s ease, opacity 0.3s ease;
+    transition: transform 0.5s ease, opacity 0.3s ease, fill 0.3s ease-in-out;
   }
 
   & .expand-icon {
     padding: 0 2em;
     transform: rotate(180deg);
     opacity: 1;
-    transition: transform 0.5s ease, opacity 0.3s ease;
+    transition: transform 0.5s ease, opacity 0.3s ease, fill 0.3s ease-in-out;
   }
 
   & .toolbar-selector-text {
-    transition: opacity 1s ease, width 1s ease;
+    transition: opacity 1s ease, width 1s ease, color 0.3s ease-in-out;
     opacity: ${({ $collapsed }) => ($collapsed ? "0" : "1")};
     width: ${({ $collapsed }) => ($collapsed ? "0" : "auto")};
     overflow: hidden;

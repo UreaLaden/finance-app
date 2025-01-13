@@ -43,7 +43,7 @@ export const CustomButton: FC<iButtonProps> = (props) => {
             id={"custom-button-tertiary"}
             onClick={onButtonClick}
             variant="text"
-            endIcon={<SvgIcon name={"caretRight"} />}
+            endIcon={<SvgIcon name={"caretRight"} width={14} height={14} />}
             fullWidth={props.fullWidth}
           >
             {props.label}

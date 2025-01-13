@@ -11,3 +11,5 @@ export { Pot } from "./Pot/Pot";
 export { Budget } from "./Budget/Budget";
 export { RecurringBillSummary } from "./Sections/RecurringBillSummary/RecurringBillSummary";
 export { TransactionTable } from "./TransactionTable/TransactionTable";
+export { DisplayCard } from "./DisplayCard/DisplayCard";
+export { BillCard } from "./BillCard/BillCard";

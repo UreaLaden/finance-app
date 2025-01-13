@@ -5,7 +5,8 @@ export const SummarySectionContainer = styled(Box)`
   width: 100%;
   display: flex;
   flex-direction: column;
-  row-gap: 0.5em;
+  row-gap: 1em;
+  /* column-gap:0.5em; */
   height:auto;
   
   // Desktop and Larger
