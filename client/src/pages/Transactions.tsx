@@ -10,7 +10,7 @@ const transactions: iTransaction[] = useMemo(() => {
         amount: 100,
         name: "Rent",
         date: new Date(),
-        avatar: "Monthly Rent",
+        avatar: "sun-park",
         recurring: false
       },
       {
@@ -18,7 +18,7 @@ const transactions: iTransaction[] = useMemo(() => {
         amount: 50,
         name: "Subscription",
         date: new Date(),
-        avatar: "Monthly Netflix Subscription",
+        avatar: "pixel-playground",
         recurring: false
       },
       {
@@ -26,7 +26,7 @@ const transactions: iTransaction[] = useMemo(() => {
         amount: 200,
         name: "Utilities",
         date: new Date(),
-        avatar: "Monthly Utility Bill",
+        avatar: "aqua-flow-utilities",
         recurring: false
       },
       {
@@ -34,7 +34,7 @@ const transactions: iTransaction[] = useMemo(() => {
         amount: 100,
         name: "Insurance",
         date: new Date(),
-        avatar: "Monthly Insurance Premium",
+        avatar: "swift-ride-share",
         recurring: true
       },
       {
@@ -42,7 +42,7 @@ const transactions: iTransaction[] = useMemo(() => {
         amount: 200.05,
         name: "Insurance",
         date: new Date(),
-        avatar: "Monthly Insurance Premium",
+        avatar: "swift-ride-share",
         recurring: false
       },
       {
@@ -50,7 +50,7 @@ const transactions: iTransaction[] = useMemo(() => {
         amount: 200.05,
         name: "Auto Loan",
         date: new Date(),
-        avatar: "Loan",
+        avatar: "buzz-marketing-group",
         recurring: true
       },
 

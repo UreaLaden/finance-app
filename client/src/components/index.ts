@@ -13,3 +13,4 @@ export { RecurringBillSummary } from "./Sections/RecurringBillSummary/RecurringB
 export { TransactionTable } from "./TransactionTable/TransactionTable";
 export { DisplayCard } from "./DisplayCard/DisplayCard";
 export { BillCard } from "./BillCard/BillCard";
+export { TransactionEntry } from "./TransactionTable/TransactionEntry";

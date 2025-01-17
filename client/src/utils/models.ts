@@ -2,6 +2,7 @@ import { User } from "firebase/auth";
 import React from "react";
 import { InputFieldTypes } from "./helpers/constants";
 import { RouteObject } from "react-router-dom";
+import { AvatarKey } from "./helpers/avatarRegistry";
 
 export interface iAuthClient {
   register: (email: string, password: string, name: string) => Promise<void>;
@@ -125,7 +126,7 @@ export interface iTransaction {
   //FIXME: Replace this interface with Protobuf generated interface
   // This is a placeholder interface
   id: string;
-  avatar: string;
+  avatar: AvatarKey;
   name: string;
   date: Date;
   amount: number;
@@ -160,15 +161,19 @@ export interface iTransactionTableProps {
   transactions: iTransaction[];
 }
 
+export interface iTransactionEntryProps {
+  transaction: iTransaction;
+}
+
 export interface iDisplayCardProps {
-  className:string;
+  className: string;
   children: React.ReactNode;
-  header:string;
-  onHeaderClick:()=>void;
-  buttonLabel:string;
+  header: string;
+  onHeaderClick: () => void;
+  buttonLabel: string;
 }
 
 export interface iBillCardProps {
-  type:"paid" | "upcoming" | "due";
+  type: "paid" | "upcoming" | "due";
   bills: iTransaction[];
 }

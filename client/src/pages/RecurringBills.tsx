@@ -10,7 +10,7 @@ export function RecurringBills() {
         amount: 100,
         name: "Rent",
         date: new Date(),
-        avatar: "Monthly Rent",
+        avatar: "sun-park",
         recurring: false
       },
       {
@@ -18,7 +18,7 @@ export function RecurringBills() {
         amount: 50,
         name: "Subscription",
         date: new Date(),
-        avatar: "Monthly Netflix Subscription",
+        avatar: "pixel-playground",
         recurring: false
       },
       {
@@ -26,7 +26,7 @@ export function RecurringBills() {
         amount: 200,
         name: "Utilities",
         date: new Date(),
-        avatar: "Monthly Utility Bill",
+        avatar: "aqua-flow-utilities",
         recurring: false
       },
       {
@@ -34,7 +34,7 @@ export function RecurringBills() {
         amount: 100,
         name: "Insurance",
         date: new Date(),
-        avatar: "Monthly Insurance Premium",
+        avatar: "swift-ride-share",
         recurring: false
       },
       {
@@ -42,7 +42,7 @@ export function RecurringBills() {
         amount: 200.05,
         name: "Insurance",
         date: new Date(),
-        avatar: "Monthly Insurance Premium",
+        avatar: "swift-ride-share",
         recurring: false
       },
 

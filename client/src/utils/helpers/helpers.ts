@@ -19,3 +19,7 @@ export function toCurrency(amount: number): string {
     currency: "USD",
   }).format(amount);
 }
+
+export function toFormattedDate(date: Date): string {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit' });
+}
