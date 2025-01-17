@@ -17,3 +17,9 @@
 db_url: your_firebase_db_url
 firebase_credentials_file: path_to_your_service_key.json
 grpc_server_address: your_grpc_server_address
+api_key: web_api_key
+authDomain: auth_domain_url
+project_id: your_project_id
+storage_bucket: storage_bucket_url
+messaging_sender_id: firebase_sender_id
+app_Id: firebase_app_id
